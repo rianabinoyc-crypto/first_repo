@@ -36,12 +36,50 @@
                 of programming and enjoy working on small projects to improve my skills.
                 exploring the different fields like web development,app dev,and AI is 
                 something I look upto as I grow in my career</p>
-       <div class="tab-titles>
-        <p class="tab-links">Education</p>
-        <p class="tab-links">hobbies</p>
-            </div>
+       <div class="tab-titles">
+        <p class="tab-links active-link" onclick="opentab('education',event)">education</p>
+        <p class="tab-links" onclick="opentab('hobbies',event)">hobbies</p>
+    </div>
+            <div class="tab-contents active-tab"id="education">
+                <ul>
+                    <li><span>2012-2022</span><br>Carmel CMI public school puliyanmala</li>
+                    <li><span>2023-2025</span><br>good shepherd junior college,thengana</li>
+                    <li><span>2025-2029</span><br>cucek(current)</li>
+                </ul>
+             </div>
+              <div class="tab-contents" id="hobbies">
+                <ul>
+                    <li><span>crocheting</span><br>I love creating beautiful items with 
+                        my hand using crochet hook</li>
+                    <li><span>reading books</span><br>life is better in bed with a book</li>
+                    <li><span>watching movies</span><br>movies are more than entertainment 
+                        they teach you life lessons</li>
+                    <li><span>listening to music</span><br>Music is absolutely one thing I 
+                        cannot get rid of</li>
+                </ul>
+                </div>
              </div>
     </div>
 </div>
+
+<script>
+
+    var tablinks=document.getElementsByClassName("tab-links");
+    var tabcontents=document.getElementsByClassName("tab-contents");
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-link");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+
+
+        }
+    
+
+</script>
 </body>
 </html>
