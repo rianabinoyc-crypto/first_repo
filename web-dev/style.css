@@ -122,3 +122,23 @@ nav ul li a:hover::after{
 .tab-contents.active-tab{
     display:block;
 }
+#portfolio{
+    padding: 50px 0;
+}
+.some-things-list{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+
+}
+.some-things{
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.some-things img{
+    width: 50%;
+    border-radius: 6px;
+    display: block;
+}
