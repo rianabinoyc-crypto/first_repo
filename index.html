@@ -11,11 +11,13 @@
     <div class="container">
         <nav>
         <ul>
-            <li><a href="#">home</a></li> 
-             <li><a href="#">about</a></li>
-             <li><a href="#">portfolio</a></li>
-             <li><a href="#">contact</a></li>
+            <li><a href="#header">home</a></li>
+             <li><a href="#about">about</a></li>
+             <li><a href="#some-things">some-things</a></li>
+             <li><a href="#contact">contact</a></li>
+             <i class="fas fa-times" onclick="closemenu()"></i>
         </ul>
+        <i class="fas fa-bars" onclick="openmenu()"></i>
         </nav>
         <div class="header text">
             <p>1st year CSE student</p>
@@ -121,12 +123,13 @@
                 </div>
             </div>
                 <div class="contact-right">
-                    <form>
+                    <form name="submit-to-google-sheet">
                      <input type="text"name="name"placeholder="your name"required>
                      <input type="email"placeholder="your email"required>
                      <textarea name="Message"rows="6" placeholder="your message"></textarea>
                      <button type="submit"class="btn btn2">submit</button>
                     </form>
+                    <span id="msg"></span>
                  </div>
     </div>
  </div>
@@ -149,6 +152,34 @@
         event.currentTarget.classList.add("active-link");
         document.getElementById(tabname).classList.add("active-tab");
     }  
+</script>
+<script>
+    var sidemeu =document.getElementById("sidemenu");
+
+    function openmenu(){
+        sidemeu.style.right = "0";
+    }
+    function closemenu(){
+        sidemeu.style.right = "-200px";
+    }
+</script>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwPAf1o2cHDPeNZuE4ANL2X5okjqN0H-zwt3FlbQ8HA0Tgoft8MPk3mhCn-jqZ4sh-1oA/exec
+  const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById("msg")
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        msg.innerHTML= "message sent successfully"
+        setTimeout(function(){
+            msg.innerHTML= ""
+        },5000)
+        form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
 </script>
 
 </body>
